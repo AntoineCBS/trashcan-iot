@@ -1,0 +1,91 @@
+<HTML>
+<HEAD>
+<style>
+.red-square {
+  height: 50px;
+  width: 50px;
+  background-color: red;
+  margin:10px;
+}
+.green-square {
+  height: 50px;
+  width: 50px;
+  background-color: green;
+  margin:10px;
+}
+.yellow-square {
+  height: 50px;
+  width: 50px;
+  background-color: yellow;
+  margin:10px;
+}
+</style>
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+ <script>
+    $( document ).ready(function(){
+		setInterval(function(){
+			$( "#results" ).empty();
+			$.getJSON("https://test-e98dc-default-rtdb.europe-west1.firebasedatabase.app./events.json", function(data, status){
+				$.each(data, function(key, val) {
+					if(val.value == 100) {
+						$("<div class=\"red-square\"></div>").appendTo($("#results"));
+					}
+					else if(val.value < 100 && val.value >= 70)	{
+						$("<div class=\"yellow-square\"></div>").appendTo($("#results"));
+					}
+					else if(val.value < 70) {
+						$("<div class=\"green-square\"></div>").appendTo($("#results"));
+					}		
+				});
+			});
+		}, 3000); // 3 secondes        
+    });
+    </script>
+	
+<TITLE> Trash can map </TITLE>
+
+<META name="description" content="ejemplos de editores">
+
+</HEAD>
+
+<br>
+
+<H1> 
+	<CENTER>
+	<U>
+	<FONT FACE="Century Gothic" COLOR="#FFOOOO">
+	This is the map of the city of Paris
+	</FONT>
+	</U>
+	</CENTER>
+</H1>
+
+
+
+
+<BODY>
+	
+<CENTER>
+<FONT FACE="Century Gothic">
+<p> As you can see the trash cans are displayed all over the city and depending on their color is their actual status </p>
+</FONT>
+</CENTER>
+	
+<CENTER>
+<FONT FACE="Century Gothic">
+<h4> These shows the meaning of each color: </h4>
+<P> </P>
+<P> 1. Green: The trash can is fully empty </P>
+<P> 2. Yellow: The trash can is at 70% of its capacity </P>
+<P> 3. Red: The trash can is at 70% of its capacity </P>
+
+<div id="results">
+</div>
+
+</FONT>
+</CENTER>
+
+</BODY>
+
+</HTML>
