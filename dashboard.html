@@ -29,7 +29,7 @@
 			$.getJSON("https://iot-trashcan-default-rtdb.europe-west1.firebasedatabase.app/events.json", function(data, status){
 				$.each(data, function(key, val) {
 					if(val.value == 30) {
-						$("<img src= './map vert.png' width='600' height='400'>").appendTo($("#results"));
+						$("<img src= './map vert.png' width='600' height='400"></img>'").appendTo($("#results"));
 					}
 					else if(val.value == 60)	{
 						$("<div class=\"yellow-square\"></div>").appendTo($("#results"));
@@ -81,7 +81,7 @@
 <P> 3. Red: The trash can is at 70% of its capacity </P>
 
 <img id="results">
-</div>
+</img>
 
 </FONT>
 </CENTER>
