@@ -28,14 +28,14 @@
 			$( "#results" ).empty();
 			$.getJSON("https://iot-trashcan-default-rtdb.europe-west1.firebasedatabase.app/events.json", function(data, status){
 				$.each(data, function(key, val) {
-					if(val.value == 100) {
-						$("<div class=\"red-square\"></div>").appendTo($("#results"));
+					if(val.value == 30) {
+						$("<div class=\"green-square\"></div>").appendTo($("#results"));
 					}
-					else if(val.value < 100 && val.value >= 70)	{
+					else if(val.value == 60)	{
 						$("<div class=\"yellow-square\"></div>").appendTo($("#results"));
 					}
-					else if(val.value < 70) {
-						$("<div class=\"green-square\"></div>").appendTo($("#results"));
+					else if(val.value == 100) {
+						$("<div class=\"red-square\"></div>").appendTo($("#results"));
 					}		
 				});
 			});
